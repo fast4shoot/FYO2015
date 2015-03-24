@@ -9,7 +9,9 @@ $(NAME).ps: $(NAME).dvi
 
 $(NAME).dvi: $(NAME).tex
 	latex $(NAME).tex
+	bibtex $(NAME)
+	latex $(NAME).tex
 	latex $(NAME).tex
 
 clean:
-	-rm $(NAME).ps $(NAME).dvi $(NAME).aux $(NAME).log
+	-rm $(NAME).ps $(NAME).dvi $(NAME).aux $(NAME).toc $(NAME).log $(NAME).bbl $(NAME).blg

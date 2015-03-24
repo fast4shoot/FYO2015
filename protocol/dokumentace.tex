@@ -4,6 +4,7 @@
 \usepackage[czech]{babel}
 \usepackage[latin2]{inputenc}
 \usepackage{times}
+\usepackage{url}
 \begin{document}
 \begin{titlepage}
 \begin{center}
@@ -47,7 +48,7 @@ Existuje :
 Tímto pravidlem se \underline{nikdy} nesmíte øídit. Pøíli¹ èasté zvýrazòování textových elementù~a~zmìny \huge{V}\LARGE{E}\Large{L}\large{I}\normalsize{K}\small{O}\footnotesize{S}\scriptsize{T}\tiny{I} \normalsize písma \Large jsou \LARGE známkou \huge{\bf amatérismu }\normalsize  autora a~pùsobí {\bf\emph{velmi}} \emph{ru¹ivì.} Dobøe navr¾ený dokument nemá více ne¾ 4 øezy èi druhy písma.
 {\tt Dobøe navr¾ený dokument je decentní­, ne chaotický.}
 
-Dùle¾itým znakem správnì vysázeného dokumentu je konzistentní pou¾í­vání­ rùzných druhù zvýraznìní­. To napøí­klad mù¾e znamenat, ¾e {\bf tuèný øez} pí­sma bude vyhrazen pouze pro klíèová slova, {\sl sklonìný øez} pouze pro doposud neznámé pojmy a~nebude se to míchat. Sklonìný øez nepùsobí­ tak ru¹ivì a~pou¾ívá se èastìji. V~\LaTeX u jej sází­me radìji pøí­kazem 
+Dùle¾itým znakem \cite{Graham} správnì vysázeného dokumentu je konzistentní pou¾í­vání­ rùzných druhù zvýraznìní­. To napøí­klad mù¾e znamenat, ¾e {\bf tuèný øez} pí­sma bude vyhrazen pouze pro klíèová slova, {\sl sklonìný øez} pouze pro doposud neznámé pojmy a~nebude se to míchat. Sklonìný øez nepùsobí­ tak ru¹ivì a~pou¾ívá se èastìji. V~\LaTeX u jej sází­me radìji pøí­kazem 
 \verb|\emph{text}| ne¾ \verb|\textit{text}|.
 
 Smí¹ená sazba se nejèastìji pou¾ívá pro sazbu vìdeckých èlánkù a~technických zpráv. U~del¹í­ch dokumentù vìdeckého èi technického charakteru je zvykem upozornit ètenáøe na význam rùzných typù zvýraznìní­ v~úvodní­ kapitole.
@@ -59,4 +60,9 @@ Smí¹ená sazba se nejèastìji pou¾ívá pro sazbu vìdeckých èlánkù a~technických zpr
 Ve smí¹ené sazbì se øez uvozovek øí­dí­ øezem první­ho uvozovaného slova. Pokud je uvozována celá vìta, sází­ se koncová teèka pøed uvozovku, pokud se uvozuje slovo nebo èást vìty, sází­ se teèka za uvozovku.
 
 Druhou odli¹ností je pravidlo pro sázení­ koncù øádkù. V~èeské sazbì by øádek nemìl konèit osamocenou jednopí­smennou pøedlo¾kou nebo spojkou (spojkou a~konèit mù¾e pøi sazbì do 25 liter). Abychom \LaTeX u zabránili v~sázení­ osamocených pøedlo¾ek, vkládáme mezi pøedlo¾ku a~slovo nezlomitelnou mezeru znakem\, \textasciitilde\, (vlnka, tilda). Pro automatické do\-plnìní vlnek slou¾í­ volnì ¹iøitelný program \emph{vlna} od pana Ol¹áka\footnote{Viz ftp://math.feld.cvut.cz/pub/olsak/vlna/.}.
+\newpage
+
+\bibliographystyle{czechiso}
+\def\refname{Pouitá literatura}
+\bibliography{dokumentace}
 \end{document}
