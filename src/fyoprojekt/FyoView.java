@@ -30,9 +30,10 @@ public class FyoView extends FrameView {
         initComponents();
         
         ArrayList<Element> elems = new ArrayList<Element>(){{
-            add(new LineElement(new Point(0.1, 0.1), new Point(0.2, 0.9), 0.3));
-            add(new LineElement(new Point(0.2, 0.9), new Point(0.9, 0.8), 0.3));
-            add(new LineElement(new Point(0.9, 0.8), new Point(0.1, 0.1), 0.3));
+            add(new LineElement(new Point(0.1, 0.1), new Point(0.2, 0.9), 0.9));
+            add(new LineElement(new Point(0.2, 0.9), new Point(0.9, 0.8), 0.9));
+            add(new LineElement(new Point(0.9, 0.8), new Point(0.8, 0.2), 0.9));
+            add(new LineElement(new Point(0.8, 0.2), new Point(0.1, 0.1), 0.9));
         }};
         telescopeCanvas1.setElems(elems);
 
@@ -67,6 +68,7 @@ public class FyoView extends FrameView {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         mainPanel = new javax.swing.JPanel();
         telescopeCanvas1 = new fyoprojekt.TelescopeCanvas();
@@ -82,6 +84,7 @@ public class FyoView extends FrameView {
         progressBar = new javax.swing.JProgressBar();
 
         mainPanel.setName("mainPanel"); // NOI18N
+        mainPanel.setLayout(new java.awt.GridBagLayout());
 
         telescopeCanvas1.setName("telescopeCanvas1"); // NOI18N
 
@@ -89,29 +92,22 @@ public class FyoView extends FrameView {
         telescopeCanvas1.setLayout(telescopeCanvas1Layout);
         telescopeCanvas1Layout.setHorizontalGroup(
             telescopeCanvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         telescopeCanvas1Layout.setVerticalGroup(
             telescopeCanvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
-        mainPanel.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(telescopeCanvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
-        );
-        mainPanelLayout.setVerticalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(telescopeCanvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        mainPanel.add(telescopeCanvas1, gridBagConstraints);
 
         menuBar.setName("menuBar"); // NOI18N
 

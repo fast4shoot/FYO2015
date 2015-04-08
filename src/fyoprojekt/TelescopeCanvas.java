@@ -5,6 +5,7 @@
  */
 package fyoprojekt;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
@@ -56,43 +57,56 @@ public class TelescopeCanvas extends javax.swing.JPanel {
             elem.paint(g, getWidth(), getHeight());
         }
         
-        Ray ray = new Ray(raySource, new Vector(1.0, 0.1), 1.0);
-        paintRay(ray, g);
-        ray = new Ray(raySource, new Vector(0.1, 1.0), 1.0);
-        paintRay(ray, g);
-        ray = new Ray(raySource, new Vector(-1.0, 0.1), 1.0);
-        paintRay(ray, g);
-        ray = new Ray(raySource, new Vector(-0.1, 1.0), 1.0);
-        paintRay(ray, g);
+        Ray ray = new Ray(raySource, new Vector(1.0, 0.9), 1.0);
+        paintRay(ray, g, Color.RED);/*
+        ray = new Ray(raySource, new Vector(1.0, -0.9), 1.0);
+        paintRay(ray, g, Color.BLUE);/*
+        ray = new Ray(raySource, new Vector(-1.0, 0.9), 1.0);
+        paintRay(ray, g, Color.GREEN);
+        ray = new Ray(raySource, new Vector(-1.0, -0.9), 1.0);
+        paintRay(ray, g, Color.MAGENTA);*/
     } 
     
-    void paintRay(Ray ray, Graphics g)
+    void paintRay(Ray ray, Graphics g, Color color)
     {
         Element hitElem = null;
-        
-        while(ray.getIntensity() > 0.1)
+        while(ray.getIntensity() > 0.0001)
         {
-            boolean found = false;
+            Ray newRay = null;
+            Element newHitElem = null;
+            double minDist = Double.MAX_VALUE;
             for (Element elem : elems)
             {
                 if (elem != hitElem)
                 {
-                    Ray newRay = elem.testHit(ray);
-                    if (newRay != null)
+                    Ray candidateRay = elem.testHit(ray);
+                    if (candidateRay != null)
                     {
-                        g.drawLine(
-                            (int)Math.round(ray.getPoint().x() * getWidth()),
-                            (int)Math.round(ray.getPoint().y() * getHeight()),
-                            (int)Math.round(newRay.getPoint().x() * getWidth()),
-                            (int)Math.round(newRay.getPoint().y() * getHeight()));
-                        found = true;
-                        ray = newRay;
-                        break;
+                        if (new Vector(ray.getPoint(), candidateRay.getPoint()).length() < minDist)
+                        {
+                            newRay = candidateRay;
+                            newHitElem = elem;
+                        }
                     }
                 }
             }
             
-            if (!found) break;
+            if (newRay != null)
+            {
+                g.setColor(color);
+                g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), (int)Math.round(color.getAlpha() * ray.getIntensity())));
+                g.drawLine(
+                    (int)Math.round(ray.getPoint().x() * getWidth()),
+                    (int)Math.round(ray.getPoint().y() * getHeight()),
+                    (int)Math.round(newRay.getPoint().x() * getWidth()),
+                    (int)Math.round(newRay.getPoint().y() * getHeight()));
+                ray = newRay;
+                hitElem = newHitElem;
+            }
+            else
+            {
+                break;
+            }
         }
         
         Point lastPoint = ray.getDirection().add(ray.getPoint());
