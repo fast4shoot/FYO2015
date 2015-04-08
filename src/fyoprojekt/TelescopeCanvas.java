@@ -5,9 +5,12 @@
  */
 package fyoprojekt;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 /**
  *
@@ -52,10 +55,9 @@ public class TelescopeCanvas extends javax.swing.JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);       
         
-        for (Element elem : elems)
-        {
-            elem.paint(g, getWidth(), getHeight());
-        }
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setStroke(new BasicStroke(2));
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         
         Ray ray = new Ray(raySource, new Vector(1.0, 0.9), 1.0);
         paintRay(ray, g, Color.RED);/*
@@ -65,6 +67,12 @@ public class TelescopeCanvas extends javax.swing.JPanel {
         paintRay(ray, g, Color.GREEN);
         ray = new Ray(raySource, new Vector(-1.0, -0.9), 1.0);
         paintRay(ray, g, Color.MAGENTA);*/
+        
+        g.setColor(Color.BLACK);
+        for (Element elem : elems)
+        {
+            elem.paint(g, getWidth(), getHeight());
+        }
     } 
     
     void paintRay(Ray ray, Graphics g, Color color)
