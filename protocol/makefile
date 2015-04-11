@@ -8,4 +8,4 @@ $(NAME).pdf: $(NAME).tex
 	pdflatex $(NAME).tex
 
 clean:
-	-rm $(NAME).ps $(NAME).dvi $(NAME).aux $(NAME).toc $(NAME).log $(NAME).bbl $(NAME).blg
+	-rm $(NAME).aux $(NAME).toc $(NAME).log $(NAME).bbl $(NAME).blg
