@@ -35,6 +35,8 @@ public class Ray {
     
     public Ray reflect(Point pointOfIncidence, Vector normal, double intensityMultiplier)
     {
+        if (new Vector(point, pointOfIncidence).dot(direction) <0.0) return null;
+        
         normal = normal.normalized();
         
         if (normal.dot(direction.normalized()) < 0.0) normal = normal.neg();

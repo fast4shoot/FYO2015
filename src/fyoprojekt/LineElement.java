@@ -26,7 +26,7 @@ public class LineElement implements Element {
     }
     
     public void paint(Graphics g, int w, int h) {
-        g.drawLine((int)(pa.x() * w), (int)(pa.y() * h), (int)(pb.x() * w), (int)(pb.y() * h));
+        g.drawLine((int)(pa.x() * w), (int)((1.0 - pa.y()) * h), (int)(pb.x() * w), (int)((1.0 - pb.y()) * h));
     }
 
     public Ray testHit(Ray ray) {

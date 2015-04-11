@@ -59,10 +59,15 @@ public class TelescopeCanvas extends javax.swing.JPanel {
         g2d.setStroke(new BasicStroke(2));
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         
-        Ray ray = new Ray(raySource, new Vector(1.0, 0.9), 1.0);
-        paintRay(ray, g, Color.RED);/*
+        
+        
+        for (int i = -5; i < 6; i++) {
+            paintRay(new Ray(raySource, new Vector(1.0, i * 0.01), 1.0), g, new Color(255, 10, 20, 127));
+        }
+        
+        /*
         ray = new Ray(raySource, new Vector(1.0, -0.9), 1.0);
-        paintRay(ray, g, Color.BLUE);/*
+        paintRay(ray, g, Color.BLUE);
         ray = new Ray(raySource, new Vector(-1.0, 0.9), 1.0);
         paintRay(ray, g, Color.GREEN);
         ray = new Ray(raySource, new Vector(-1.0, -0.9), 1.0);
@@ -78,36 +83,34 @@ public class TelescopeCanvas extends javax.swing.JPanel {
     void paintRay(Ray ray, Graphics g, Color color)
     {
         Element hitElem = null;
-        while(ray.getIntensity() > 0.0001)
+        while(ray.getIntensity() > 0.000001)
         {
             Ray newRay = null;
             Element newHitElem = null;
             double minDist = Double.MAX_VALUE;
             for (Element elem : elems)
             {
-                if (elem != hitElem)
+                Ray candidateRay = elem.testHit(ray);
+                if (candidateRay != null)
                 {
-                    Ray candidateRay = elem.testHit(ray);
-                    if (candidateRay != null)
+                    double dist = new Vector(ray.getPoint(), candidateRay.getPoint()).length();
+                    if (dist < minDist && (hitElem != elem))// || dist > 0.001))
                     {
-                        if (new Vector(ray.getPoint(), candidateRay.getPoint()).length() < minDist)
-                        {
-                            newRay = candidateRay;
-                            newHitElem = elem;
-                        }
+                        newRay = candidateRay;
+                        newHitElem = elem;
+                        minDist = dist;
                     }
                 }
             }
             
             if (newRay != null)
             {
-                g.setColor(color);
                 g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), (int)Math.round(color.getAlpha() * ray.getIntensity())));
                 g.drawLine(
                     (int)Math.round(ray.getPoint().x() * getWidth()),
-                    (int)Math.round(ray.getPoint().y() * getHeight()),
+                    (int)Math.round((1.0 - ray.getPoint().y()) * getHeight()),
                     (int)Math.round(newRay.getPoint().x() * getWidth()),
-                    (int)Math.round(newRay.getPoint().y() * getHeight()));
+                    (int)Math.round((1.0 - newRay.getPoint().y()) * getHeight()));
                 ray = newRay;
                 hitElem = newHitElem;
             }
@@ -118,11 +121,12 @@ public class TelescopeCanvas extends javax.swing.JPanel {
         }
         
         Point lastPoint = ray.getDirection().add(ray.getPoint());
+        g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), (int)Math.round(color.getAlpha() * ray.getIntensity())));
         g.drawLine(
             (int)Math.round(ray.getPoint().x() * getWidth()),
-            (int)Math.round(ray.getPoint().y() * getHeight()),
+            (int)Math.round((1.0 - ray.getPoint().y()) * getHeight()),
             (int)Math.round(lastPoint.x() * getWidth()),
-            (int)Math.round(lastPoint.y() * getHeight()));
+            (int)Math.round((1.0 - lastPoint.y()) * getHeight()));
     }
     
     /**

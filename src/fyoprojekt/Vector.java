@@ -71,6 +71,10 @@ public class Vector {
         return new Vector(x * a, y * a);
     }
 
+    public Vector mul(Vector v) {
+        return new Vector(x * v.x, y * v.y);
+    }
+    
     public double dot(Vector other)
     {
         return x() * other.x() + y() * other.y();

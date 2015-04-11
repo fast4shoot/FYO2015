@@ -30,10 +30,11 @@ public class FyoView extends FrameView {
         initComponents();
         
         ArrayList<Element> elems = new ArrayList<Element>(){{
-            add(new LineElement(new Point(0.1, 0.1), new Point(0.2, 0.9), 0.9));
-            add(new LineElement(new Point(0.2, 0.9), new Point(0.9, 0.8), 0.9));
-            add(new LineElement(new Point(0.9, 0.8), new Point(0.8, 0.2), 0.9));
-            add(new LineElement(new Point(0.8, 0.2), new Point(0.1, 0.1), 0.9));
+            add(new LineElement(new Point(0.1, 0.1), new Point(0.2, 0.9), 0.3));
+            add(new LineElement(new Point(0.2, 0.9), new Point(0.9, 0.8), 0.3));
+            add(new LineElement(new Point(0.9, 0.8), new Point(0.8, 0.2), 0.3));
+            add(new LineElement(new Point(0.8, 0.2), new Point(0.1, 0.1), 0.3));
+            add(new OvalElement(new Point(0.5, 0.5), 0.2, 0.4 , Math.PI * 1.75, Math.PI * 0.25, 0.8));
         }};
         telescopeCanvas1.setElems(elems);
 
@@ -42,7 +43,7 @@ public class FyoView extends FrameView {
             public void mouseDragged(MouseEvent e) {
                 Point newRaySource = new Point(
                     (double)e.getX() / telescopeCanvas1.getWidth(), 
-                    (double)e.getY() / telescopeCanvas1.getHeight());
+                    1.0 - ((double)e.getY() / telescopeCanvas1.getHeight()));
                 
                 telescopeCanvas1.setRaySource(newRaySource);
             }
