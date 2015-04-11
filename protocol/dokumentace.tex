@@ -6,6 +6,9 @@
 \usepackage{times}
 \usepackage{graphicx}
 \usepackage{wrapfig}
+\usepackage{floatrow}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker = {,}}
 \begin{document}
 \begin{titlepage}
 \begin{center}
@@ -53,17 +56,120 @@ Následně NASA v roce 1971 utvořila Large Space Telescope Science Steering Gro
 
 V roce 1977 byl dokončen původní návrh teleskopu a~NASA přenechává práci na optickém systému společnosti Perkin-Elmer Corporation a~práci na pouzdru společnosti Lockheed Missiles and Space.
 
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=6cm]{Spherical_aberration_2.eps}
+		\caption{Vizualizace sférické aberace, kterou trpí primární zrcadlo HST.}
+		\label{Spherical_aberration_2}
+	\end{center}
+\end{figure}
+
 Práce na optickém systému a pouzdru byly dokončeny v letech 1984 a 1985.
+
 
 Teleskop byl 24. dubna roku 1990 vynešen na oběžnou dráhu. Nedlouho poté je objevena, že hlavní zrcadlo teleskopu se vyznačuje sférickou aberací, což mělo za následek rozmazané snímky \cite{nasaHubbleChronology}.
 
+
 \subsubsection{Servisní mise}
-V roce 1993 proto byla k teleskopu vyslána první servisní mise, jejímž cílem bylo nainstalovat dvě nová zařízení - Wide Field and Planetary Camera 2 (WFPC2), tedy nový CCD optický senzor, a Corrective Optics Space Telescope Axial Replacement (COSTAR), tedy korektivní optika, která měla omezit vliv sférické aberace hlavního zrcadla.
+V roce 1993 byla k teleskopu vyslána první servisní mise STS-61, jejímž cílem bylo nainstalovat dvě nová zařízení - Wide Field and Planetary Camera 2 (WFPC2), tedy nový CCD optický senzor nahrazující původní WFPC, a Corrective Optics Space Telescope Axial Replacement (COSTAR), tedy korektivní optika, která měla omezit vliv sférické aberace hlavního zrcadla. Mise byla úspěšná a rapidně zvýšila ostrost snímků z HTS.
+
+\begin{figure}[!h]
+	\begin{floatrow}
+		\ffigbox{\includegraphics[scale = 0.6]{hubble-pre-wfpc2.png}}{\caption{Galaxie Messier 100 zachycená HST před instalací WFPC2 a COSTAR}\label{hubble-pre-wfpc2}}
+		\ffigbox{\includegraphics[scale = 0.6]{hubble-post-wfpc2.png}}{\caption{Galaxie Messier 100 zachycená HST po instalací WFPC2 a COSTAR}\label{hubble-post-wfpc2}}
+	\end{floatrow}
+\end{figure}
+
+Druhá servisní mise (STS-82) byla provedena v roce 1997. Během této mise bylo nainstalováno několik dodatečných zařízení, primárně Near Infrared Camera and Multi-Object Spectrometer (NICMOS) a Space Telescope Imaging Spectrograph (STIS).
+
+Třetí servisní mise byla rozdělena na dvě části. První části (STS-103) se uskutečnila ke konci roku 1999. Tato část byla zaměřena převážně na opravné a vylepšující práce. Druhá část (STS-109), uskutečněná v roce 2002, již měla větší efekt. Během této části došlo k instalaci Advanced Camera for Surveys (ACS), nové efektivnější solární panely, nový chladící systém pro NICMOS.
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=8cm]{HST-SM4.png}
+		\caption{Fotografie HST pořízená během STS-125}
+		\label{HST-SM4}
+	\end{center}
+\end{figure}
+
+Poslední, čtvrtá, servisní mise (STS-125) proběhla v roce 2009. Během této mise byl odstraněn modul WFPC2 a byl nahrazen novým modulem WFC3, tedy Wide Field Camera 3. Dále došlo k instalaci Cosmic Origins Spectrograph (COS). Zároveň byla odstraněna korektivní optika COSTAR, jelikož všechny systémy nainstalované na HST již byly konstruovány s vestavěnou korekcí. Zároveň došlo k opravě modulů ACS a STIS, které v letech 2007, resp. 2004, přestaly pracovat.
 
 \subsection{Popis konstrukce}
+
+HST je přibližně válcové konstrukce, o průměru až 4,2 m a délce a o délce 13,2 m. Po stranách HST se nachází dva solární panely dlouhé 7,6 m. Celý teleskop váží přibližně 11 tun. HST je tedy podstatně menší, ale zároveň lehčí, než jeho de facto nástupce, tj. Vesmírný teleskop Jamese Webba.
+
+HST se v současnosti nachází na oběžné dráze 552 km nad Zemí a Zemi oběhne za 97 minut \cite{hubblesiteFacts}. HST není vybaven žádnými raketovými motory a pro orientaci jsou použita rotující kola.
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=16cm]{hst-structure.png}
+		\caption{Struktura HST}
+		\label{hst-structure}
+	\end{center}
+\end{figure}
+
+Přední část HST je tvořena jednoduchým válcem, který částečně zabraňuje vstupu nežádoucího světla do teleskopu. Ke stejnému účelu slouží i žebrování uvnitř objektivu.
+
+Za světelným štítem je umístěno sekundární zrcadlo. Poté následuje tzv. forward shell, tedy další kus žebrovaného objektivu. Za tímto se nachází Support Systems Module Equipment Section (SSMES), což je prstenec obsahující baterie, elektroniku, počítače, komunikační vybavení a manévrovací motory a kola. Ve středu tohoto prstence taktéž najdeme primární zrcadlo teleskopu.
+
+Za primárním zrcadlem už se nachází snímací zařízení. Tato jsou rozdělena do dvou kategorií:
+\begin{itemize}
+	\item Radiální - Wide Field Camera 3 a Fine Guidance Sensors
+	\item Axiální - Cosmic Origins Spectrograph, Advanced Camera for Surveys, Space Telescope Imaging Spectrograph a Near Infrared Camera and Multi-Object Spectrometer.
+\end{itemize}
+
+Snímací nástroje a SSMES jsou umístěny ve válcovém hliníkovém obalu. Zbytek teleskopu je obalen do Multi-Layered Insulation, tedy vícevrtstvé izolace tvořené z teflonu pokrytého hliníkem.
+
+\subsection{Vybavení}
+Již víme, že na HST se nachází hned několik zařízení pro snímání přicházejícího světla. Tato zařízení jsou následující:
+\subsubsection{Wide Field Camera 3}
+WFC3 je kamera nacházející se v radiální sekci teleskopu, kde nahradila v roce 2009 předchozí Wide Field and Planetary Camera 2.
+
+WFC3 pracuje v rozsahu od blízkého ultrafialového záření až po blízké infračervené záření.
+
+Pro snímání ultrafialového a viditelného světelného záření je použit CCD senzor o rozlišení $4000 \times 4000$ pixelů. Pro Infračervené záření je pak použit senzor o rozlišení $1000 \times 1000$ pixelů \cite{ballWfc3}.
+
+\subsubsection{Fine Guidace Sensors}
+FGS jsou tři kamery umístěné taktéž v radiální sekci teleskopu, které jsou určené pro zaměřování teleskopu.
+
+Dvě tyto kamery se typicky zaměří na dvě kotevní hvězdy a na základě jejich pozice a ve spolupráci s manévrovacími motory poté udržují teleskop v pozici zaměřené na cíl \cite{hubblesiteFgs}.
+
+\subsubsection{Cosmic Origins Spectrograph}
+COS se nachází v axiální části teleskopu od roku 2009, kdy nahradil korektivní optiku COSTAR. Jak již jeho název napovídá, tak se jedná o spektrograf. Konkrétně se jedná o spektrograf pracující v rozsahu ultrafialového záření \cite{hubblesiteCos}.
+
+\subsubsection{Advanced Camera for Surveys}
+ACS je druhé zařízení nacházející se v axiální části teleskopu. Jedná se o kombinaci tří zařízení \cite{stsciDetectors}:
+\begin{itemize}
+	\item Wide Field Channel - Kamera pro pořizování rozsáhlých snímků galaxie. Obsahuje dva CCD snímače o rozlišení $2048 \times 4096$ pixelů.
+	\item High Resolution Channel - Kamera pro pořizování méně rozsáhlých snímků galaxie. Zasahuje více do ultrafialového záření, než WFC. Obsahuje jeden CCD snímač s rozlišením $1024 \times 1024$.
+	\item Solar Blind Channel - Tato kamera má podobné vlastnosti jako HRC, ovšem snímá primárně ultrafialové záření.
+\end{itemize}
+
+\subsubsection{Space Telescope Imaging Spectrograph}
+Opět zařízení umístěné v axiální části teleskopu. Podobně jako v případě COS se jedná o spektrograf, ovšem pracující i v rozsahu viditelného a blízkého infračerveného světla. STIS navíc funguje i jako běžná kamera. Zařízení obsahuje tři senzory (jeden CCD a dva MAMA), každý s rozlišením $1024 \times 1024$ a různým frekvenčním rozsahem \cite{stsciStisDetectors}\cite{hubblesiteStis}.
+
+\subsubsection{Near Infrared Camera and Multi-Object Spectrometer}
+
+NICMOS je finální zařízení nacházející se v axiální části teleskopu. NICMOS je infračervená kamera pracující v rozsahu \SI{0,8}{\um} až \SI{2,5}{\um}. Zařízení obsahuje tři detektory s rozlišením $256 \times 256$ pixelů, každý s aktivním chlazením \cite{stsciNicmosDetectors}\cite{stsciNicmosPerformance}.
+
 \subsection{Optický systém}
 
+Pohled na hlavní strukturu strukturu optického systému HST vidíme na obrázku \ref{hubble-structure}. Konstrukce je poměrně klasická, se zaostřením na nekonečno.
 
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=12cm]{hubble-structure.eps}
+		\caption{Boční pohled na strukturu optického systému}
+		\label{hubble-structure}
+	\end{center}
+\end{figure}
+
+Klíčovými prvky jsou pochopitelně dvě zrcadla. Větší, primární, zrcadlo má průměr \SI{2.4}{\meter} a poloměr zakřivení \SI{11.04}{\meter}. Sekundární zrcadlo má průměr \SI{0.31}{\meter} a poloměr zakřivení \SI{-1.36}{\meter}.
+
+Sekundární zrcadlo je pohyblivé, aby bylo možné teleskop zaostřit.
+
+Aby do snímacích zařízení nevstupovalo nežádoucí záření, tak je objektiv teleskopu vybaven žebrováním, které toto záření zastaví.
 
 \section{Vesmírný teleskop Jamese Webba}
 
@@ -73,7 +179,7 @@ Druhým teleskopem, který v~tomto projektu představíme, je vesmírný telesko
 JWST je plánovaná velká vesmírná observatoř optimalizovaná pro příjem infračerveného vlnového záření, pomocí kterého budou doplněny a~prohloubeny obejvy, které byly uskutečněny Hubbleovým teleskopem.
 Díky větší vlnové délce bude JWST schopen pozorovat formování prvních galaxií při utváření vesmíru a dále bude schopen pozorovat formování galaxií, které jsou ukryré za mračny vesmírného prachu.
 
-Původní název JSWT byl Vesmírný teleskop nové generace (anglicky Next Generation Space Telescope, zkráceně NGST). Přívlastek "nové generace" získal proto, že JWST bude stavět a pokračovat ve vědním průzku\-mu, který započal Hubbleův vesmírný teleskop. Objevy, které byly učiněny Hubbleovým teleskopem, ale i ostatními teleskopy, zapříčinily revoluci v astronomii a vyvstaly nové otázky, na jejichž zodpovězení bylo zapotřebí nových, odlišných a výkonějšších teleskopů. 
+Původní název JSWT byl Vesmírný teleskop nové generace (anglicky Next Generation Space Telescope, zkráceně NGST). Přívlastek "nové generace" získal proto, že JWST bude stavět a pokračovat ve vědním průzku\-mu, který započal Hubbleův vesmírný teleskop. Objevy, které byly učiněny Hubbleovým teleskopem, ale i ostatními teleskopy, zapříčinily revoluci v astronomii a vyvstaly nové otázky, na jejichž zodpovězení bylo zapotřebí nových, odlišných a výkonnějších teleskopů. 
 JWST je také teleskopem nové generace i~po stránce technologické a~to díky použití nových technologií jako například odlehčeného, rozvinovacího primárního zrcadla, které bude určovat technologický směr pro budoucí mise.
 Vesmírný teleskop nové generace byl 10. září 2002 přejmenován na Vesmírný teleskop Jamese Webba na počest Jamese E. Webba \cite{nasaFAQ}.
  
@@ -81,7 +187,7 @@ Vesmírný teleskop nové generace byl 10. září 2002 přejmenován na Vesmír
 \begin{wrapfigure}{l}{0cm}
 \includegraphics[width=3cm]{webb.eps}
 \end{wrapfigure}
-James Edwin Webb (1906-1992) byl druhým ředitelem vesmírné agentury NASA. Na pozici ředitele agentury působil od 14. ledna 1961 do 7. října 1968. Během své kariéry se proslavil tím, že byl vedoucím programu Apollo a série misí zaměřených na prozkoumávání měsíčního povrchu, obzvláště mísí, které se zabývaly přístáním prvního člověka na Měsíci. 
+James Edwin Webb (1906-1992) byl druhým ředitelem vesmírné agentury NASA. Na pozici ředitele agentury působil od 14. ledna 1961 do 7. října 1968. Během své kariéry se proslavil tím, že byl vedoucím programu Apollo a série misí zaměřených na prozkoumávání měsíčního povrchu, obzvláště mísí, které se zabývaly přistáním prvního člověka na Měsíci. 
 Dále inicioval vznik intenzivního vesmírného programu, díky němuž během jeho funkčního období vypravil více než 75 letů a to včetně americké první meziplanetární sondy. Na jeho počest se Vesmírný teleskop nové generace přejmenoval na Vesmírný teleskop Jamese Webba.
 \\
 
@@ -91,9 +197,9 @@ Hlavní mise, kterou by měl JWST po svém vypuštění plnit, se skládá ze č
 \subsubsection{Zrcadla a optický systém}
 Teleskop se skládá z velkého primárního a malého sekundárního a terciálního zrcadla, tepelného štítu a věde\-ckých přístrojů, které jsou popsány níže. Jak již bylo napsáno, JWST bude pracovat v infračerveném spektru, což mu umožní proniknout vesmírným prachem a sledovat velmi vzdálené objekty s nízkou povrchovou teplotou.
 
-Primární zrcadlo JWST má průměr 6.5 metrů a ohniskovou vzdálenost 131.4 metru. Je příliš velké na to, aby bylo dopraveno do vesmíru ve finální podobě, proto se skládá z 18 šestiúhelníkových segmentů vyrobených z berylia. Tím konstruktéři získlai celkovou plochu primárního zrcadla 25 m$^2$. Vše je vymyšleno tak, aby se celý teleskop vešel do hlavice nosné rakety.
+Primární zrcadlo JWST má průměr 6.5 metrů a ohniskovou vzdálenost 131.4 metru. Je příliš velké na to, aby bylo dopraveno do vesmíru ve finální podobě, proto se skládá z 18 šestiúhelníkových segmentů vyrobených z berylia. Tím konstruktéři získali celkovou plochu primárního zrcadla 25 m$^2$. Vše je vymyšleno tak, aby se celý teleskop vešel do hlavice nosné rakety.
 
-Každý z šestiúhelníkových dílů primárního zrcadla má v průměru jen něco málo přes 1.3 metru a váží pouhých 40 kg. Tyto díly jsou již vyrobeny a byly dopraveny do Goddardova kosmického střediska, kde se podrobují testům a montují na nostnou konstrukci teleskopu.
+Každý z šestiúhelníkových dílů primárního zrcadla má v průměru jen něco málo přes 1.3 metru a váží pouhých 40 kg. Tyto díly jsou již vyrobeny a byly dopraveny do Goddardova kosmického střediska, kde se podrobují testům a montují na nosnou konstrukci teleskopu.
 
 Segmenty nejsou jen pouhými zrcadly, ale spíše komplexním souborem technologií, které jim umožňují pracovat jako jeden celek. Zrcadla jsou tvořena zlatem potaženým reflexím beryliovým podkladem, který je ukotvený na delta rám a je schopen pomocí servopohonů změnit pozici a zakřivení vlastního zrcadla. Materiál musel být volen tak, aby byl co nejlehčí a zároveň schopen pracovat při teplotách pod -240 $^\circ$C. Zrcadla přitom musí ustát otřesy a přetížení při startu nosné rakety. Na oběžné dráze se po nich pro změnu požaduje, aby nastavené prvky v neměnné pozici setrvaly ve stabilní poloze až po dobu dvou týdnů. Všechny segmenty jsou rozděleny do tří skupin po šesti zrcadlech, kde každá skupina má lehce odlišnou odrazivou přesnost (viz. obrázek \ref{segmenty}). 
 
@@ -105,7 +211,7 @@ Segmenty nejsou jen pouhými zrcadly, ale spíše komplexním souborem technolog
 \end{center}
 \end{figure}
 
-\paragraph{Beryliový podklkad zrcadla}
+\paragraph{Beryliový podklad zrcadla}
 Berylium vědci vybrali proto, že je dostatečně tuhé a při tom lehké, ale hlavně, že při změnách teplot chová stabilně a předvídatelně. Konstrukce z tohoto kovu je 5 cm silná s dokonale vybroušenou reflexní plochou. Zadní strana zrcadla má z důvodu odlehčení podobu včelí plástve, jen s tím rozdílem, že podstava je trojúhelníková a ne šestiúhelníková.
 Reflexní povrch má přípustnou odchylkou pouhých 20 nanometrů (tj. 20 miliardtin metru). Na něj je nanesena tenká vrstvička zlata, které maximalizuje schopnost odrážet infračervené světlo. 
 
@@ -115,11 +221,11 @@ Na opačné straně od leštěného povrchu jsou upevněny tři trojúhelníkov�
 \paragraph{Kotvící delta rám}
 Beryliové patice jsou osazeny do rámu, který je rovněž z berylia. Rám je hlavní vymezovací strukturou pro každý z 18 primárních segmentů zrcadla. Primární segmenty jsou 75 cm široké a mají tvar písmene delta. Beryliový rám propojuje jednotlivá zrcadla s podkladem, paticemi a servopohony.
 
-\paragraph{Ochraný štít}
+\paragraph{Ochranný štít}
 JWST bude vybaven speciálním pětivrstvým slunečním štítem, který bude ochraňovat teleskop před slunečním zářením. Díky tomuto štítu bude možno teleskop ochladit na teplotu okolo 50 Kelvina (přibližně -234 $^\circ$C) díky pasivnímu vyzařování tepla do vesmíru. Strana štítu natočená ke Slunci bude zachycovat tepelné záření. Teplota na této straně štítu by se měla pohybovat okolo 85 $^\circ$C a budou zde umístěny komunikační systémy a solární panely. Štít bude mít ve výsledku velikost přibližně tenisového kurtu.
 
 \paragraph{Optická soustava a pozorovací technika}
-JWST využívá k pozování tří-zrcadlového anastigmatu - dalekohledu postaveném se třemi zakřivenými zrcadly, které umožní minimalizovat tři hlavní aberace\footnote{odchylky}: sférickou, komu\footnote{projevuje se "kometovým ocasem" u pozorovaných objektů} a astigmatismus\footnote{zaostření pozorovaného objektu}. Tohoto se používá především k tomu, aby bylo možné pozorovat objekty v mnohem větším zorném úhlu, než by uožňovaly teleskopy se dvěma či jednou zakřivenou plochou \cite{wikipediaAnastigmat}.
+JWST využívá k pozování tří-zrcadlového anastigmatu - dalekohledu postaveném se třemi zakřivenými zrcadly, které umožní minimalizovat tři hlavní aberace\footnote{odchylky}: sférickou, komu\footnote{projevuje se "kometovým ocasem" u pozorovaných objektů} a astigmatismus\footnote{zaostření pozorovaného objektu}. Tohoto se používá především k tomu, aby bylo možné pozorovat objekty v mnohem větším zorném úhlu, než by umožňovaly teleskopy se dvěma či jednou zakřivenou plochou \cite{wikipediaAnastigmat}.
 
 Paprsky z primárního zrcadla jsou směřovány do sekundárního, které je umístěno před primárním zrcadlem a odtud jsou směřovány do terciálního "zrcadla", které je umístěno přímo uprostřed primárního zrcadla (viz. obrázky \ref{paprskyWebb} a \ref{paprskyWebb2}).
 
@@ -146,9 +252,9 @@ Near InfraRed Camera (NIRCam) - kamera vybavená přístrojem, který umožní o
 
 Near InfraRed Spectrograph (NIRSpec) - sektrograf určený pro studium složení, teploty a hmotnosti vzdálených nebeských objektů.
 
-Mid-InfraRed Instrument (MIRI) - kamera a spektograf v jednom. Zaměří se na studium nejstarších galaxií a hvězd stejně jako slabých komet.
+Mid-InfraRed Instrument (MIRI) - kamera a spektrograf v jednom. Zaměří se na studium nejstarších galaxií a hvězd stejně jako slabých komet.
 
-Fine Guidance Sensor / Near InfraRed Imager and Slitless Spectrograph (FGS/NIRISS) - další spektograf jehož úkolem je zkoumat složení planet u cizích hvězd \cite{abcko}.
+Fine Guidance Sensor / Near InfraRed Imager and Slitless Spectrograph (FGS/NIRISS) - další spektrograf jehož úkolem je zkoumat složení planet u cizích hvězd \cite{abcko}.
 
 \subsubsection{Ovládání segmentů primárního zrcadla}
 Tvarování povrchu a vyrovnávání povrchu primárního zrcadla zajišťují servopohony. Starají se o všech 18 primárních segmentů, výsledkem je ostrý obraz i při dlouhé expozici a měnících se teplotních podmínkách.
@@ -159,7 +265,7 @@ Každý z hlavních segmentů zrcadla má šest pohonných jednotek, jen tak šl
 
 Servopohony jsou jednou z mnoha součástí vytvořených speciálně pro JWST. Jejich úkolem je provádět změny v rozměrech nanometrů. Právě tím bude teleskop dosahovat své optické dokonalosti. Pro lepší představu, jak je zařízení přesné, si můžeme vzít do ruky kancelářský papír. Ten má  tloušťku okolo  100 000 nm. Změny odrazové plochy zrcadla se upravují v měřítku  1 / 100 000 tloušťky běžného papíru. A nejen to. Pohony musí pracovat spolehlivě i když teplota klesne na hodnotu několika desítek stupňů nad absolutní nulu.
 
-Po vypuštění JWST budeme muset na první snímky nejakou dobu počkat. Nejprve se bude  stabilizovat na provozní teplotu. Pak technici začnou pomocí příkazů ze Země testovat funkci servopohonů. Bude to trvat zhruba dva měsíce a teprve pak začne být JWST uváděn do provozu a začne s vědeckým pozorováním. Jemné dolaďování zrcadel budou vědci provádět jednou za 10 až 14 dnů. JWST bude první vesmírnou observatoří používající aktivně řízené segmentové primární zrcadlo.
+Po vypuštění JWST budeme muset na první snímky nějakou dobu počkat. Nejprve se bude  stabilizovat na provozní teplotu. Pak technici začnou pomocí příkazů ze Země testovat funkci servopohonů. Bude to trvat zhruba dva měsíce a teprve pak začne být JWST uváděn do provozu a začne s vědeckým pozorováním. Jemné dolaďování zrcadel budou vědci provádět jednou za 10 až 14 dnů. JWST bude první vesmírnou observatoří používající aktivně řízené segmentové primární zrcadlo.
 
 \paragraph{Kotvení zrcadla k hlavní konstrukci}
 Pro připojení jednotlivých zrcadel k hlavní nosné konstrukci teleskopu jsou použity pružné tvarovky – Flextures. Fungují jako pružiny. Flextures dovolují rozpínání a smršťování celé soustavy zrcadel, ke kterému dochází změnami teplot  už v rámci předletových kontrol zde na Zemi. Cílem je otestovat tvarovou stabilitu JWST před jeho velkým ochlazením, ke kterému dojde ve vesmíru a kde provozní teplota bude okolo 50 K (-223 $^\circ$C) \cite{osel}.
