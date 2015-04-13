@@ -18,6 +18,7 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  * The application's main frame.
@@ -80,9 +81,27 @@ public class FyoView extends FrameView {
         telescopeCanvas1 = new fyoprojekt.TelescopeCanvas();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        primarySlider = new javax.swing.JSlider();
+        hPrimaryAValue = new javax.swing.JSlider();
         jLabel2 = new javax.swing.JLabel();
-        secondarySlider = new javax.swing.JSlider();
+        hPrimaryBValue = new javax.swing.JSlider();
+        jLabel3 = new javax.swing.JLabel();
+        hPrimaryA = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        hPrimaryB = new javax.swing.JLabel();
+        hPrimaryEccentricity = new javax.swing.JLabel();
+        hPrimaryRadius = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        hSecondaryA = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        hSecondaryB = new javax.swing.JLabel();
+        hSecondaryAValue = new javax.swing.JSlider();
+        hSecondaryBValue = new javax.swing.JSlider();
+        hOffsetValue = new javax.swing.JSlider();
+        jLabel13 = new javax.swing.JLabel();
+        hOffset = new javax.swing.JLabel();
+        hSecondaryEccentricity = new javax.swing.JLabel();
+        hSecondaryRadius = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -135,7 +154,8 @@ public class FyoView extends FrameView {
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(fyoprojekt.FyoApp.class).getContext().getResourceMap(FyoView.class);
         jTabbedPane1.addTab(resourceMap.getString("jSplitPane2.TabConstraints.tabTitle"), jSplitPane2); // NOI18N
 
-        jSplitPane1.setResizeWeight(1.0);
+        jSplitPane1.setDividerLocation(300);
+        jSplitPane1.setDividerSize(5);
         jSplitPane1.setName("jSplitPane1"); // NOI18N
 
         telescopeCanvas1.setName("telescopeCanvas1"); // NOI18N
@@ -144,7 +164,7 @@ public class FyoView extends FrameView {
         telescopeCanvas1.setLayout(telescopeCanvas1Layout);
         telescopeCanvas1Layout.setHorizontalGroup(
             telescopeCanvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         telescopeCanvas1Layout.setVerticalGroup(
             telescopeCanvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,46 +178,233 @@ public class FyoView extends FrameView {
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
-        jPanel1.add(jLabel1, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        jPanel1.add(jLabel1, gridBagConstraints);
 
-        primarySlider.setMaximum(5000);
-        primarySlider.setPaintLabels(true);
-        primarySlider.setValue(2208);
-        primarySlider.setName("primarySlider"); // NOI18N
-        primarySlider.addChangeListener(new javax.swing.event.ChangeListener() {
+        hPrimaryAValue.setMaximum(5000);
+        hPrimaryAValue.setMinimum(100);
+        hPrimaryAValue.setPaintLabels(true);
+        hPrimaryAValue.setValue(3998);
+        hPrimaryAValue.setName("hPrimaryAValue"); // NOI18N
+        hPrimaryAValue.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 hubbleSliderStateChanged(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        jPanel1.add(primarySlider, gridBagConstraints);
+        jPanel1.add(hPrimaryAValue, gridBagConstraints);
 
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         jPanel1.add(jLabel2, gridBagConstraints);
 
-        secondarySlider.setMaximum(500);
-        secondarySlider.setMinorTickSpacing(500);
-        secondarySlider.setValue(272);
-        secondarySlider.setName("secondarySlider"); // NOI18N
-        secondarySlider.addChangeListener(new javax.swing.event.ChangeListener() {
+        hPrimaryBValue.setMajorTickSpacing(100);
+        hPrimaryBValue.setMaximum(5000);
+        hPrimaryBValue.setMinorTickSpacing(10);
+        hPrimaryBValue.setValue(3313);
+        hPrimaryBValue.setName("hPrimaryBValue"); // NOI18N
+        hPrimaryBValue.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 hubbleSliderStateChanged(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        jPanel1.add(secondarySlider, gridBagConstraints);
+        jPanel1.add(hPrimaryBValue, gridBagConstraints);
+
+        jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
+        jLabel3.setName("jLabel3"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
+        jPanel1.add(jLabel3, gridBagConstraints);
+
+        hPrimaryA.setText(resourceMap.getString("hPrimaryA.text")); // NOI18N
+        hPrimaryA.setName("hPrimaryA"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        jPanel1.add(hPrimaryA, gridBagConstraints);
+
+        jPanel2.setName("jPanel2"); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 22;
+        gridBagConstraints.weighty = 0.1;
+        jPanel1.add(jPanel2, gridBagConstraints);
+
+        hPrimaryB.setText(resourceMap.getString("hPrimaryB.text")); // NOI18N
+        hPrimaryB.setName("hPrimaryB"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        jPanel1.add(hPrimaryB, gridBagConstraints);
+
+        hPrimaryEccentricity.setText(resourceMap.getString("hPrimaryEccentricity.text")); // NOI18N
+        hPrimaryEccentricity.setName("hPrimaryEccentricity"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        jPanel1.add(hPrimaryEccentricity, gridBagConstraints);
+
+        hPrimaryRadius.setText(resourceMap.getString("hPrimaryRadius.text")); // NOI18N
+        hPrimaryRadius.setName("hPrimaryRadius"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        jPanel1.add(hPrimaryRadius, gridBagConstraints);
+
+        jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
+        jLabel8.setName("jLabel8"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
+        jPanel1.add(jLabel8, gridBagConstraints);
+
+        jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
+        jLabel9.setName("jLabel9"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        jPanel1.add(jLabel9, gridBagConstraints);
+
+        hSecondaryA.setText(resourceMap.getString("hSecondaryA.text")); // NOI18N
+        hSecondaryA.setName("hSecondaryA"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        jPanel1.add(hSecondaryA, gridBagConstraints);
+
+        jLabel11.setText(resourceMap.getString("jLabel11.text")); // NOI18N
+        jLabel11.setName("jLabel11"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        jPanel1.add(jLabel11, gridBagConstraints);
+
+        hSecondaryB.setText(resourceMap.getString("hSecondaryB.text")); // NOI18N
+        hSecondaryB.setName("hSecondaryB"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 11;
+        jPanel1.add(hSecondaryB, gridBagConstraints);
+
+        hSecondaryAValue.setMaximum(2000);
+        hSecondaryAValue.setMinimum(100);
+        hSecondaryAValue.setValue(800);
+        hSecondaryAValue.setName("hSecondaryAValue"); // NOI18N
+        hSecondaryAValue.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                hubbleSliderStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(hSecondaryAValue, gridBagConstraints);
+
+        hSecondaryBValue.setMaximum(5000);
+        hSecondaryBValue.setMinimum(100);
+        hSecondaryBValue.setValue(522);
+        hSecondaryBValue.setName("hSecondaryBValue"); // NOI18N
+        hSecondaryBValue.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                hubbleSliderStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(hSecondaryBValue, gridBagConstraints);
+
+        hOffsetValue.setMaximum(500);
+        hOffsetValue.setMinimum(-500);
+        hOffsetValue.setValue(-47);
+        hOffsetValue.setName("hOffsetValue"); // NOI18N
+        hOffsetValue.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                hubbleSliderStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 15;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(hOffsetValue, gridBagConstraints);
+
+        jLabel13.setText(resourceMap.getString("jLabel13.text")); // NOI18N
+        jLabel13.setName("jLabel13"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        jPanel1.add(jLabel13, gridBagConstraints);
+
+        hOffset.setText(resourceMap.getString("hOffset.text")); // NOI18N
+        hOffset.setName("hOffset"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 15;
+        jPanel1.add(hOffset, gridBagConstraints);
+
+        hSecondaryEccentricity.setText(resourceMap.getString("hSecondaryEccentricity.text")); // NOI18N
+        hSecondaryEccentricity.setName("hSecondaryEccentricity"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        jPanel1.add(hSecondaryEccentricity, gridBagConstraints);
+
+        hSecondaryRadius.setText(resourceMap.getString("hSecondaryRadius.text")); // NOI18N
+        hSecondaryRadius.setName("hSecondaryRadius"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        jPanel1.add(hSecondaryRadius, gridBagConstraints);
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -274,18 +481,36 @@ public class FyoView extends FrameView {
     }//GEN-LAST:event_hubbleSliderStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hOffset;
+    private javax.swing.JSlider hOffsetValue;
+    private javax.swing.JLabel hPrimaryA;
+    private javax.swing.JSlider hPrimaryAValue;
+    private javax.swing.JLabel hPrimaryB;
+    private javax.swing.JSlider hPrimaryBValue;
+    private javax.swing.JLabel hPrimaryEccentricity;
+    private javax.swing.JLabel hPrimaryRadius;
+    private javax.swing.JLabel hSecondaryA;
+    private javax.swing.JSlider hSecondaryAValue;
+    private javax.swing.JLabel hSecondaryB;
+    private javax.swing.JSlider hSecondaryBValue;
+    private javax.swing.JLabel hSecondaryEccentricity;
+    private javax.swing.JLabel hSecondaryRadius;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JSlider primarySlider;
     private javax.swing.JProgressBar progressBar;
-    private javax.swing.JSlider secondarySlider;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
@@ -303,14 +528,18 @@ public class FyoView extends FrameView {
     
     private ArrayList<Element> constructHubble()
     {
-        double primaryHeight = primarySlider.getValue() * 0.01;
-        double secondaryHeight = secondarySlider.getValue() * 0.01;
-        return constructHubble(primaryHeight, secondaryHeight);
-    }
-    
-    private ArrayList<Element> constructHubble(final double primaryHeight, final double secondaryHeight)
-    {
-        final double hullLightMult = 0.2;
+        final double paValue = hPrimaryAValue.getValue() * 0.001;
+        final double pbValue = hPrimaryBValue.getValue() * 0.001;
+        final double saValue = hSecondaryAValue.getValue() * 0.001;
+        final double sbValue = hSecondaryBValue.getValue() * 0.001;
+        
+        fillMirrorLabels(paValue, pbValue, hPrimaryA, hPrimaryB, hPrimaryEccentricity, hPrimaryRadius);
+        fillMirrorLabels(saValue, sbValue, hSecondaryA, hSecondaryB, hSecondaryEccentricity, hSecondaryRadius);
+        
+        final double sOffset = hOffsetValue.getValue() * 0.001;
+        hOffset.setText(String.format("%.3f m", sOffset));
+        
+        final double hullLightMult = 0.1;
         final ElementFactory f = new ElementFactory(1.0, 0.0, 14.0, 7.0);
         
         ArrayList<Element> list = new ArrayList<Element>(){{
@@ -325,13 +554,36 @@ public class FyoView extends FrameView {
             
             add(f.line(12.7, 0.7, 12.7, 6.3, hullLightMult));
             
-            add(f.oval(2.64, 3.5, 2.72, secondaryHeight, Math.PI * 1.9 * (2.72 / secondaryHeight), Math.PI * 0.1, 0.95));
-            add(f.oval(-3, 3.5, 22.08, primaryHeight, Math.PI * 0.05, Math.PI * 0.1, 0.95));
-            add(f.oval(-3, 3.5, 22.08, primaryHeight, Math.PI * 1.9, Math.PI * 1.95, 0.95));
+            add(f.hyperbola(4 + sOffset, 3.5, saValue, -sbValue, -0.15, 0.15, 0.95));
+            
+            add(f.hyperbola(8.9, 3.5, paValue, -pbValue, -1.2, -0.3, 0.95));
+            add(f.hyperbola(8.9, 3.5, paValue, -pbValue, 0.3, 1.2, 0.95));
+            
+            add(f.line(3.8 + sOffset, 3.65, 4.10 + sOffset, 3.65, hullLightMult));
+            add(f.line(3.8 + sOffset, 3.35, 4.10 + sOffset, 3.35, hullLightMult));
+            
+            add(f.line(8.9, 3.8, 8.0, 3.8, hullLightMult));
+            add(f.line(8.9, 3.2, 8.0, 3.2, hullLightMult));
+            
+            add(f.line(9.2, 3.8, 9.2, 3.2, 0.01));
         }};
       
         
         
         return list;
+    }
+    
+    private void fillMirrorLabels(double a, double b, JLabel aLabel, JLabel bLabel, JLabel eccLabel, JLabel radiusLabel)
+    {
+        aLabel.setText(String.format("%.3f m", a));
+        bLabel.setText(String.format("%.3f m", b));
+        
+        double focus = Math.sqrt(a*a + b*b);
+        double ecc = focus / a;
+        double radius = (focus - a) * ecc;
+        
+        eccLabel.setText(String.format("Excentricita: %.3f", ecc));
+        radiusLabel.setText(String.format("Poloměr křivosti: %.3f m", radius));
+        
     }
 }

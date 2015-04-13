@@ -27,6 +27,11 @@ public class ElementFactory {
         return new OvalElement(new Point((cx + x) / width, (cy + y) / height), w / width, h / height, minAngle, maxAngle, lightMult);
     }
     
+    public Element hyperbola(double cx, double cy, double a, double b, double bottomClip, double topClip, double intensityMultiplier)
+    {
+        return new HyperbolicElement(new Point((cx + x) / width, (cy + y) / height), a / width , b / height, bottomClip / height, topClip / height, intensityMultiplier);
+    }
+    
     public Element line(double ax, double ay, double bx, double by, double lightMult)
     {
         return new LineElement(new Point((ax + x) / width, (ay + y) / height), new Point((bx + x) / width, (by + y) / height), lightMult);
