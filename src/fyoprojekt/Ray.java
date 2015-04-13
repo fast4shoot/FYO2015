@@ -39,7 +39,7 @@ public class Ray {
         
         normal = normal.normalized();
         
-        if (normal.dot(direction.normalized()) < 0.0) normal = normal.neg();
+        if (normal.dot(direction.normalized()) > 0.0) normal = normal.neg();
         
         Vector newDirection = direction.sub(normal.mul(2.0 * normal.dot(direction)));
         return new Ray(pointOfIncidence, newDirection, intensity * intensityMultiplier);

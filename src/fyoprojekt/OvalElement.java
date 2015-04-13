@@ -6,6 +6,9 @@
 package fyoprojekt;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.Shape;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.acos;
 import static java.lang.Math.PI;
@@ -53,12 +56,48 @@ public class OvalElement implements Element {
     }
     
     public void paint(Graphics g, int w, int h) {
+        Vector size = new Vector(width, height);
+        Vector minLimit = new Vector(1, 0).rotatedCcw(minAngle);
+        Vector maxLimit = new Vector(1, 0).rotatedCcw(maxAngle);
+        
+        int shapeStepCount = 8;
+        double shapeAngleStep = (minAngle < maxAngle ? (maxAngle - minAngle) : (maxAngle - minAngle + 2 * PI)) / shapeStepCount;
+        
+        int[] shapeXs = new int[shapeStepCount + 2];
+        int[] shapeYs = new int[shapeStepCount + 2];
+        
+        Point minLimitPt = minLimit.mul(size).add(center);
+        Point maxLimitPt = maxLimit.mul(size).add(center);
+        
+        shapeXs[0] = (int)Math.round(minLimitPt.x() * w);
+        shapeYs[0] = (int)Math.round((1.0 - minLimitPt.y()) * h);
+        
+        shapeXs[shapeStepCount] = (int)Math.round(maxLimitPt.x() * w);
+        shapeYs[shapeStepCount] = (int)Math.round((1.0 - maxLimitPt.y()) * h);
+        
+        shapeXs[shapeStepCount + 1] = (int)Math.round(center.x() * w);
+        shapeYs[shapeStepCount + 1] = (int)Math.round((1.0 - center.y()) * h);
+        
+        for (int i = 1; i < (shapeStepCount); i++)
+        {
+            Vector offset = minLimit.rotatedCcw(shapeAngleStep * i).mul(size);
+            Point point = offset.add(center);
+            
+            shapeXs[i] = (int)Math.round(point.x() * w);
+            shapeYs[i] = (int)Math.round((1.0 - point.y()) * h);
+        }
+        
+        Shape shape = new Polygon(shapeXs, shapeYs, shapeStepCount + 2);
+        
+        Shape oldClip = g.getClip();
+        g.setClip(shape);
         g.drawOval(
             (int)Math.round((center.x() - width * 0.5) * w),
             (int)Math.round((1.0 - center.y() - height * 0.5) * h),
             (int)Math.round(width * w),
             (int)Math.round(height * h)
         );
+        g.setClip(oldClip);
     }
 
     public Ray testHit(Ray ray) {
@@ -69,15 +108,8 @@ public class OvalElement implements Element {
         double e = ray.getLineEq().c();
         
         // HERE BE DRAGONS
-        double x1t1 = -d*d*Y*Y + (-2*c*d*X - 2*d*e)*Y - c*c*X*X - 2*c*e*X - e*e + b*b*d*d + a*a*c*c;
-        double x1t2 = -(a*b*d*sqrt(x1t1) + a*a*c*d*Y - b*b*d*d*X + a*a*c*e);
-        double x1t3 = (b*b*d*d + a*a*c*c);
-        double x1 = x1t2/x1t3;
-        
-        double y1t1 = -d*d*Y*Y - 2*c*d*X*Y - 2*d*e*Y  - c*c*X*X - 2*c*e*X - e*e + b*b*d*d + a*a*c*c;
-        double y1t2 = (a*b*c*sqrt(y1t1) + a*a*c*c*Y - b*b*c*d*X - b*b*d*e);
-        double y1t3 = (b*b*d*d + a*a*c*c);
-        double y1 =  y1t2/y1t3;
+        double x1 = -(a*b*d*sqrt(-d*d*Y*Y + (-2*c*d*X - 2*d*e)*Y - c*c*X*X - 2*c*e*X - e*e + b*b*d*d + a*a*c*c) + a*a*c*d*Y - b*b*d*d*X + a*a*c*e)/(b*b*d*d + a*a*c*c);
+        double y1 =  (a*b*c*sqrt(-d*d*Y*Y - 2*c*d*X*Y - 2*d*e*Y  - c*c*X*X - 2*c*e*X - e*e + b*b*d*d + a*a*c*c) + a*a*c*c*Y - b*b*c*d*X - b*b*d*e)/(b*b*d*d + a*a*c*c);
         
         double x2 =  (a*b*d*sqrt(-d*d*Y*Y + (-2*c*d*X - 2*d*e)*Y - c*c*X*X - 2*c*e*X - e*e + b*b*d*d + a*a*c*c) - a*a*c*d*Y + b*b*d*d*X - a*a*c*e)/(b*b*d*d + a*a*c*c);
         double y2 = (-a*b*c*sqrt(-d*d*Y*Y - 2*c*d*X*Y - 2*d*e*Y  - c*c*X*X - 2*c*e*X - e*e + b*b*d*d + a*a*c*c) + a*a*c*c*Y - b*b*c*d*X - b*b*d*e)/(b*b*d*d + a*a*c*c);
@@ -101,7 +133,7 @@ public class OvalElement implements Element {
         else if (p2Eligible) finalPoi = p2;
         else return null;
         
-        Vector normal = new Vector((p1.x() - center.x()) / (a*a), (p1.y() - center.y()) / (b*b));
+        Vector normal = new Vector((finalPoi.x() - center.x()) / (a*a), (finalPoi.y() - center.y()) / (b*b));
         return ray.reflect(finalPoi, normal, intensityMultiplier);
     }
     
