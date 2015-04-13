@@ -38,7 +38,8 @@ public class FyoView extends FrameView {
             add(new OvalElement(new Point(0.5, 0.5), 0.2, 0.4 , Math.PI * 1.75, Math.PI * 0.25, 0.8));
         }};*/
         resetHubble();
-
+        resetWebb();
+        
         telescopeCanvas1.addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
@@ -50,6 +51,19 @@ public class FyoView extends FrameView {
             }
         });
         telescopeCanvas1.setRaySource(new Point(0.1, 0.5));
+        
+        telescopeCanvas3.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                Point newRaySource = new Point(
+                    (double)e.getX() / telescopeCanvas3.getWidth(), 
+                    1.0 - ((double)e.getY() / telescopeCanvas3.getHeight()));
+                
+                telescopeCanvas3.setRaySource(newRaySource);
+            }
+        });
+        telescopeCanvas3.setRaySource(new Point(0.1, 0.5));
+        
     }
 
     @Action
@@ -526,6 +540,11 @@ public class FyoView extends FrameView {
         telescopeCanvas1.setElems(constructHubble());
     }
     
+    void resetWebb()
+    {
+        telescopeCanvas3.setElems(constructWebb());
+    }
+    
     private ArrayList<Element> constructHubble()
     {
         final double paValue = hPrimaryAValue.getValue() * 0.001;
@@ -584,6 +603,26 @@ public class FyoView extends FrameView {
         
         eccLabel.setText(String.format("Excentricita: %.3f", ecc));
         radiusLabel.setText(String.format("Poloměr křivosti: %.3f m", radius));
+    }
         
+    private ArrayList<Element> constructWebb()
+    {
+        final double hullLightMult = 0.2;
+        final ElementFactory f = new ElementFactory(1.0, 0.0, 14.0, 7.0);
+        
+        ArrayList<Element> list = new ArrayList<Element>(){{
+           
+            add(f.circle(2.1, 3.5, 3.0, Math.PI * 1.91, Math.PI * 0.09, 0.95));
+            add(f.circle(2.05, 3.5, 3.0, Math.PI * 1.91, Math.PI * 0.09, 0.01));
+            add(f.circle(5, 3.5, 6.6, Math.PI * 0.04, Math.PI * 0.15, 0.95));
+            add(f.circle(5, 3.5, 6.6, Math.PI * 1.85, Math.PI * 1.96, 0.95));
+            add(f.circle(5.05, 3.5, 6.6, Math.PI * 0.04, Math.PI * 0.15, 0.01));
+            add(f.circle(5.05, 3.5, 6.6, Math.PI * 1.85, Math.PI * 1.96, 0.01));
+//            add(f.line(9.2, 4.5, 12, 2.2, 0.95));
+        }};
+      
+        
+        
+        return list;
     }
 }
