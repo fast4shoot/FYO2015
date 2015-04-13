@@ -55,6 +55,8 @@ public class TelescopeCanvas extends javax.swing.JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);       
         
+        if (raySource == null || elems == null) return;
+        
         Graphics2D g2d = (Graphics2D) g;
         g2d.setStroke(new BasicStroke(2));
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -62,7 +64,7 @@ public class TelescopeCanvas extends javax.swing.JPanel {
         
         
         for (int i = -5; i < 6; i++) {
-            paintRay(new Ray(raySource, new Vector(1.0, i * 0.01), 1.0), g, new Color(255, 10, 20, 127));
+            paintRay(new Ray(new Vector(0.0, i * 0.01).add(raySource), new Vector(1.0, 0), 1.0), g, new Color(255, 10, 20, 127));
         }
         
         /*

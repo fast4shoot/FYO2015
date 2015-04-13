@@ -29,14 +29,14 @@ public class FyoView extends FrameView {
 
         initComponents();
         
-        ArrayList<Element> elems = new ArrayList<Element>(){{
+        /*ArrayList<Element> elems = new ArrayList<Element>(){{
             add(new LineElement(new Point(0.1, 0.1), new Point(0.2, 0.9), 0.3));
             add(new LineElement(new Point(0.2, 0.9), new Point(0.9, 0.8), 0.3));
             add(new LineElement(new Point(0.9, 0.8), new Point(0.8, 0.2), 0.3));
             add(new LineElement(new Point(0.8, 0.2), new Point(0.1, 0.1), 0.3));
             add(new OvalElement(new Point(0.5, 0.5), 0.2, 0.4 , Math.PI * 1.75, Math.PI * 0.25, 0.8));
-        }};
-        telescopeCanvas1.setElems(elems);
+        }};*/
+        resetHubble();
 
         telescopeCanvas1.addMouseMotionListener(new MouseAdapter() {
             @Override
@@ -72,7 +72,17 @@ public class FyoView extends FrameView {
         java.awt.GridBagConstraints gridBagConstraints;
 
         mainPanel = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jSplitPane2 = new javax.swing.JSplitPane();
+        jPanel3 = new javax.swing.JPanel();
+        telescopeCanvas3 = new fyoprojekt.TelescopeCanvas();
+        jSplitPane1 = new javax.swing.JSplitPane();
         telescopeCanvas1 = new fyoprojekt.TelescopeCanvas();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        primarySlider = new javax.swing.JSlider();
+        jLabel2 = new javax.swing.JLabel();
+        secondarySlider = new javax.swing.JSlider();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -85,7 +95,48 @@ public class FyoView extends FrameView {
         progressBar = new javax.swing.JProgressBar();
 
         mainPanel.setName("mainPanel"); // NOI18N
-        mainPanel.setLayout(new java.awt.GridBagLayout());
+        mainPanel.setLayout(new javax.swing.BoxLayout(mainPanel, javax.swing.BoxLayout.LINE_AXIS));
+
+        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+
+        jSplitPane2.setResizeWeight(1.0);
+        jSplitPane2.setName("jSplitPane2"); // NOI18N
+
+        jPanel3.setName("jPanel3"); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 782, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 412, Short.MAX_VALUE)
+        );
+
+        jSplitPane2.setLeftComponent(jPanel3);
+
+        telescopeCanvas3.setName("telescopeCanvas3"); // NOI18N
+
+        javax.swing.GroupLayout telescopeCanvas3Layout = new javax.swing.GroupLayout(telescopeCanvas3);
+        telescopeCanvas3.setLayout(telescopeCanvas3Layout);
+        telescopeCanvas3Layout.setHorizontalGroup(
+            telescopeCanvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        telescopeCanvas3Layout.setVerticalGroup(
+            telescopeCanvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 412, Short.MAX_VALUE)
+        );
+
+        jSplitPane2.setRightComponent(telescopeCanvas3);
+
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(fyoprojekt.FyoApp.class).getContext().getResourceMap(FyoView.class);
+        jTabbedPane1.addTab(resourceMap.getString("jSplitPane2.TabConstraints.tabTitle"), jSplitPane2); // NOI18N
+
+        jSplitPane1.setResizeWeight(1.0);
+        jSplitPane1.setName("jSplitPane1"); // NOI18N
 
         telescopeCanvas1.setName("telescopeCanvas1"); // NOI18N
 
@@ -93,26 +144,70 @@ public class FyoView extends FrameView {
         telescopeCanvas1.setLayout(telescopeCanvas1Layout);
         telescopeCanvas1Layout.setHorizontalGroup(
             telescopeCanvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
         telescopeCanvas1Layout.setVerticalGroup(
             telescopeCanvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 412, Short.MAX_VALUE)
         );
 
+        jSplitPane1.setRightComponent(telescopeCanvas1);
+
+        jPanel1.setName("jPanel1"); // NOI18N
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+        jPanel1.add(jLabel1, new java.awt.GridBagConstraints());
+
+        primarySlider.setMaximum(5000);
+        primarySlider.setPaintLabels(true);
+        primarySlider.setValue(2208);
+        primarySlider.setName("primarySlider"); // NOI18N
+        primarySlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                hubbleSliderStateChanged(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        mainPanel.add(telescopeCanvas1, gridBagConstraints);
+        jPanel1.add(primarySlider, gridBagConstraints);
+
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setName("jLabel2"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        jPanel1.add(jLabel2, gridBagConstraints);
+
+        secondarySlider.setMaximum(500);
+        secondarySlider.setMinorTickSpacing(500);
+        secondarySlider.setValue(272);
+        secondarySlider.setName("secondarySlider"); // NOI18N
+        secondarySlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                hubbleSliderStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.1;
+        jPanel1.add(secondarySlider, gridBagConstraints);
+
+        jSplitPane1.setLeftComponent(jPanel1);
+
+        jTabbedPane1.addTab(resourceMap.getString("jSplitPane1.TabConstraints.tabTitle"), jSplitPane1); // NOI18N
+
+        mainPanel.add(jTabbedPane1);
+        jTabbedPane1.getAccessibleContext().setAccessibleName(resourceMap.getString("jTabbedPane1.AccessibleContext.accessibleName")); // NOI18N
 
         menuBar.setName("menuBar"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(fyoprojekt.FyoApp.class).getContext().getResourceMap(FyoView.class);
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
@@ -147,11 +242,11 @@ public class FyoView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 615, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -174,16 +269,69 @@ public class FyoView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void hubbleSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hubbleSliderStateChanged
+        resetHubble();
+    }//GEN-LAST:event_hubbleSliderStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JSlider primarySlider;
     private javax.swing.JProgressBar progressBar;
+    private javax.swing.JSlider secondarySlider;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
     private fyoprojekt.TelescopeCanvas telescopeCanvas1;
+    private fyoprojekt.TelescopeCanvas telescopeCanvas3;
     // End of variables declaration//GEN-END:variables
 
 
     private JDialog aboutBox;
+    
+    void resetHubble()
+    {
+        telescopeCanvas1.setElems(constructHubble());
+    }
+    
+    private ArrayList<Element> constructHubble()
+    {
+        double primaryHeight = primarySlider.getValue() * 0.01;
+        double secondaryHeight = secondarySlider.getValue() * 0.01;
+        return constructHubble(primaryHeight, secondaryHeight);
+    }
+    
+    private ArrayList<Element> constructHubble(final double primaryHeight, final double secondaryHeight)
+    {
+        final double hullLightMult = 0.2;
+        final ElementFactory f = new ElementFactory(1.0, 0.0, 14.0, 7.0);
+        
+        ArrayList<Element> list = new ArrayList<Element>(){{
+            add(f.line(0.0, 2.0, 8.0, 2.0, hullLightMult));
+            add(f.line(0.0, 5.0, 8.0, 5.0, hullLightMult));
+            
+            add(f.line(8.0, 2.0, 8.0, 0.7, hullLightMult));
+            add(f.line(8.0, 5.0, 8.0, 6.3, hullLightMult));
+            
+            add(f.line(8.0, 0.7, 12.7, 0.7, hullLightMult));
+            add(f.line(8.0, 6.3, 12.7, 6.3, hullLightMult));
+            
+            add(f.line(12.7, 0.7, 12.7, 6.3, hullLightMult));
+            
+            add(f.oval(2.64, 3.5, 2.72, secondaryHeight, Math.PI * 1.9 * (2.72 / secondaryHeight), Math.PI * 0.1, 0.95));
+            add(f.oval(-3, 3.5, 22.08, primaryHeight, Math.PI * 0.05, Math.PI * 0.1, 0.95));
+            add(f.oval(-3, 3.5, 22.08, primaryHeight, Math.PI * 1.9, Math.PI * 1.95, 0.95));
+        }};
+      
+        
+        
+        return list;
+    }
 }
