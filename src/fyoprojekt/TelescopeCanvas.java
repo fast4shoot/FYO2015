@@ -46,6 +46,14 @@ public class TelescopeCanvas extends javax.swing.JPanel {
         repaint();
     }
     
+    public void setRaySource(int x, int y) {
+        double size = Math.min(getWidth(), getHeight());
+        double xoffset = (getWidth() - size) / 2;
+        double yoffset = (getHeight() - size) / 2;
+        
+        setRaySource(new Point((x - xoffset) / size, 1.0 - ((y - yoffset) / size)));
+    }
+    
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(800,800);

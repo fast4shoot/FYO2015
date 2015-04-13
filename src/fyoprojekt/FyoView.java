@@ -42,24 +42,16 @@ public class FyoView extends FrameView {
         
         telescopeCanvas1.addMouseMotionListener(new MouseAdapter() {
             @Override
-            public void mouseDragged(MouseEvent e) {
-                Point newRaySource = new Point(
-                    (double)e.getX() / telescopeCanvas1.getWidth(), 
-                    1.0 - ((double)e.getY() / telescopeCanvas1.getHeight()));
-                
-                telescopeCanvas1.setRaySource(newRaySource);
+            public void mouseDragged(MouseEvent e) {   
+                telescopeCanvas1.setRaySource(e.getX(), e.getY());
             }
         });
-        telescopeCanvas1.setRaySource(new Point(0.1, 0.5));
+        telescopeCanvas1.setRaySource(new Point(-0.1, 0.6));
         
         telescopeCanvas3.addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                Point newRaySource = new Point(
-                    (double)e.getX() / telescopeCanvas3.getWidth(), 
-                    1.0 - ((double)e.getY() / telescopeCanvas3.getHeight()));
-                
-                telescopeCanvas3.setRaySource(newRaySource);
+                telescopeCanvas3.setRaySource(e.getX(), e.getY());
             }
         });
         telescopeCanvas3.setRaySource(new Point(0.1, 0.5));
@@ -119,19 +111,14 @@ public class FyoView extends FrameView {
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
-        javax.swing.JMenu helpMenu = new javax.swing.JMenu();
-        javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
-        statusPanel = new javax.swing.JPanel();
-        javax.swing.JSeparator statusPanelSeparator = new javax.swing.JSeparator();
-        statusMessageLabel = new javax.swing.JLabel();
-        statusAnimationLabel = new javax.swing.JLabel();
-        progressBar = new javax.swing.JProgressBar();
 
         mainPanel.setName("mainPanel"); // NOI18N
         mainPanel.setLayout(new javax.swing.BoxLayout(mainPanel, javax.swing.BoxLayout.LINE_AXIS));
 
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
 
+        jSplitPane2.setDividerLocation(100);
+        jSplitPane2.setDividerSize(5);
         jSplitPane2.setResizeWeight(1.0);
         jSplitPane2.setName("jSplitPane2"); // NOI18N
 
@@ -141,11 +128,11 @@ public class FyoView extends FrameView {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 782, Short.MAX_VALUE)
+            .addGap(0, 99, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 412, Short.MAX_VALUE)
+            .addGap(0, 433, Short.MAX_VALUE)
         );
 
         jSplitPane2.setLeftComponent(jPanel3);
@@ -160,7 +147,7 @@ public class FyoView extends FrameView {
         );
         telescopeCanvas3Layout.setVerticalGroup(
             telescopeCanvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 412, Short.MAX_VALUE)
+            .addGap(0, 433, Short.MAX_VALUE)
         );
 
         jSplitPane2.setRightComponent(telescopeCanvas3);
@@ -182,7 +169,7 @@ public class FyoView extends FrameView {
         );
         telescopeCanvas1Layout.setVerticalGroup(
             telescopeCanvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 412, Short.MAX_VALUE)
+            .addGap(0, 433, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(telescopeCanvas1);
@@ -343,7 +330,7 @@ public class FyoView extends FrameView {
 
         hSecondaryAValue.setMaximum(2000);
         hSecondaryAValue.setMinimum(100);
-        hSecondaryAValue.setValue(800);
+        hSecondaryAValue.setValue(722);
         hSecondaryAValue.setName("hSecondaryAValue"); // NOI18N
         hSecondaryAValue.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -439,55 +426,8 @@ public class FyoView extends FrameView {
 
         menuBar.add(fileMenu);
 
-        helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
-        helpMenu.setName("helpMenu"); // NOI18N
-
-        aboutMenuItem.setAction(actionMap.get("showAboutBox")); // NOI18N
-        aboutMenuItem.setName("aboutMenuItem"); // NOI18N
-        helpMenu.add(aboutMenuItem);
-
-        menuBar.add(helpMenu);
-
-        statusPanel.setName("statusPanel"); // NOI18N
-
-        statusPanelSeparator.setName("statusPanelSeparator"); // NOI18N
-
-        statusMessageLabel.setName("statusMessageLabel"); // NOI18N
-
-        statusAnimationLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        statusAnimationLabel.setName("statusAnimationLabel"); // NOI18N
-
-        progressBar.setName("progressBar"); // NOI18N
-
-        javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
-        statusPanel.setLayout(statusPanelLayout);
-        statusPanelLayout.setHorizontalGroup(
-            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
-            .addGroup(statusPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 615, Short.MAX_VALUE)
-                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(statusAnimationLabel)
-                .addContainerGap())
-        );
-        statusPanelLayout.setVerticalGroup(
-            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(statusPanelLayout.createSequentialGroup()
-                .addComponent(statusPanelSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(statusMessageLabel)
-                    .addComponent(statusAnimationLabel)
-                    .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3))
-        );
-
         setComponent(mainPanel);
         setMenuBar(menuBar);
-        setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
     private void hubbleSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hubbleSliderStateChanged
@@ -524,10 +464,6 @@ public class FyoView extends FrameView {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JProgressBar progressBar;
-    private javax.swing.JLabel statusAnimationLabel;
-    private javax.swing.JLabel statusMessageLabel;
-    private javax.swing.JPanel statusPanel;
     private fyoprojekt.TelescopeCanvas telescopeCanvas1;
     private fyoprojekt.TelescopeCanvas telescopeCanvas3;
     // End of variables declaration//GEN-END:variables
@@ -585,6 +521,16 @@ public class FyoView extends FrameView {
             add(f.line(8.9, 3.2, 8.0, 3.2, hullLightMult));
             
             add(f.line(9.2, 3.8, 9.2, 3.2, 0.01));
+            
+            add(f.line(8.9, 4.7, 5.0, 4.7, hullLightMult));
+            add(f.line(8.9, 2.3, 5.0, 2.3, hullLightMult));
+            
+            for (int i = 0; i < 10; i++)
+            {
+                add(f.line(i * 0.4, 2.0, i * 0.4, 2.2, hullLightMult));
+                add(f.line(i * 0.4, 5.0, i * 0.4, 4.8, hullLightMult));
+            }
+            
         }};
       
         
