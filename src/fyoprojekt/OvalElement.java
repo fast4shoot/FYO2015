@@ -88,7 +88,6 @@ public class OvalElement implements Element {
         }
         
         Shape shape = new Polygon(shapeXs, shapeYs, shapeStepCount + 2);
-        
         Shape oldClip = g.getClip();
         g.setClip(shape);
         g.drawOval(
@@ -126,15 +125,15 @@ public class OvalElement implements Element {
         boolean p2Eligible = testPointEligibility(p2, ray);
         Point nearest = toP1.length() < toP2.length() ? p1 : p2;
         
-        Point finalPoi;
+        Point poi;
         
-        if (p1Eligible && p2Eligible) finalPoi = nearest;
-        else if (p1Eligible) finalPoi = p1;
-        else if (p2Eligible) finalPoi = p2;
+        if (p1Eligible && p2Eligible) poi = nearest;
+        else if (p1Eligible) poi = p1;
+        else if (p2Eligible) poi = p2;
         else return null;
         
-        Vector normal = new Vector((finalPoi.x() - center.x()) / (a*a), (finalPoi.y() - center.y()) / (b*b));
-        return ray.reflect(finalPoi, normal, intensityMultiplier);
+        Vector normal = new Vector((poi.x() - center.x()) / (a*a), (poi.y() - center.y()) / (b*b));
+        return ray.reflect(poi, normal, intensityMultiplier);
     }
     
     private boolean testPointEligibility(Point p, Ray ray)
