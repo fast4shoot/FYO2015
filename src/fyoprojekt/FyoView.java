@@ -564,7 +564,7 @@ public class FyoView extends FrameView {
             add(f.circle(5, 3.5, 6.6, Math.PI * 1.85, Math.PI * 1.96, 0.95));
             add(f.circle(5.05, 3.5, 6.6, Math.PI * 0.04, Math.PI * 0.15, 0.01));
             add(f.circle(5.05, 3.5, 6.6, Math.PI * 1.85, Math.PI * 1.96, 0.01));
-            add(f.line(9, 4, 9, 3, 0.01));
+            add(f.line(9, 4.1, 9, 2.9, 0.01));
         }};
       
         
